@@ -1,2 +1,5 @@
 #.pem files
 *.pem
+
+#vs code folder
+__pycache__
