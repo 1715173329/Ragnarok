@@ -1,4 +1,6 @@
-from Crypto.PublicKey import RSA
+#from Crypto.PublicKey import RSA
+#from Crypto import RSA
+import rsa
 import socket
 import threading
 import Cryptor
@@ -114,7 +116,7 @@ if __name__ == "__main__":
     server_addr=(CFG["Target_IP"],CFG["Target_Port"])
     UserID=CFG["UserID"]
     TargetID=CFG["TargetID"]
-    #生成RSA pair.
+    #create RSA pair.
     Cryptor.RSA_keygen()
 
     #connect to server
