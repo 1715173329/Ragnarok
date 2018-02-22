@@ -2,8 +2,9 @@ import json
 import os
 import os.path
 def loadcfg():
-    loader = open("config.json","r")
-    return json.loads(loader.read())
+    with open("config.json","r") as loader:
+        cl_config_text = loader.read()
+    return json.loads(cl_config_text)
 
 if __name__ == "__main__":
     print (loadcfg())
