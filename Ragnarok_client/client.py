@@ -1,6 +1,4 @@
-#from Crypto.PublicKey import RSA
-#from Crypto import RSA
-import rsa
+from Crypto.PublicKey import RSA
 import socket
 import threading
 import Cryptor
@@ -14,9 +12,10 @@ pubkey=""
 #RSA public key Rx
 class key_exchange(threading.Thread):
     
-    def __init__(self): 
+    def __init__(self):
         threading.Thread.__init__(self)
-        
+        #super(threading.Thread,self).__init__(self)
+
     def run(self):
         global pubkey
         print("Waiting for key.")

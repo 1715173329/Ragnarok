@@ -20,6 +20,9 @@ Ragnarok 0.1 BETA
 ------
 ### 安装
 我在win10 64bit python3.6.4环境下写的。换个别的环境不保证能用。
+
+**Python3.6 环境需要安装Cryptodome模块,建议使用IDE(例如PyCharm)安装**
+
 ### 设置
 UserID：你自己的代号，比如9527
 
