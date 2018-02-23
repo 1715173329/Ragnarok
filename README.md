@@ -23,7 +23,7 @@ Ragnarok_server\server.py
 ------
 Ragnarok_client\Whisper.py
 ### 安装
-我在win10 64bit python3.6.4环境下写的。换个别的环境不保证能用。
+我在win10 64bit python3.6.4环境下写的。换个别的环境不保证能用。请安装三方库Cryptodome
 ### 设置
 UserID：你自己的代号，比如9527
 
