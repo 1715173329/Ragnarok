@@ -6,8 +6,7 @@ import rsa
 
 #Output RSA pair to file
 def RSA_keygen():
-    #new_key = RSA.generate(2048)
-    new_key = rsa.newkeys(2048)
+    new_key = RSA.generate(2048)
     public_key = new_key.publickey().exportKey("PEM") 
     private_key = new_key.exportKey("PEM") 
     f = open('public.pem','w')

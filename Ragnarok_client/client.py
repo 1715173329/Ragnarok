@@ -7,6 +7,7 @@ import cfgloader
 import hashlib
 import os
 global pubkey, TargetID
+
 pubkey=""
 
 #RSA public key Rx
@@ -60,13 +61,11 @@ def pubkey_Exchange():
 def show_me_the_key():
     global pubkey
     print ("-"*75)
-    print ("Your RSA public key:")
-    print ()
+    print ("Your RSA public key:\n")
     print (open("public.pem").read())
     print ()
     print ("-"*75)
-    print ("Recieved RSA public key:")
-    print ()
+    print ("Recieved RSA public key:\n")
     print (pubkey)
     print ()
     print ("-"*75)
@@ -105,7 +104,7 @@ def prorecv(data):
     
 if __name__ == "__main__":
     #Initializing.
-    Recv  = Rx()
+    Recv = Rx()
     Trans = Tx()
     Rxonce = key_exchange()
     

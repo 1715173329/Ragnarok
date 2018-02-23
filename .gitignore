@@ -4,3 +4,6 @@
 #vs code folder
 __pycache__/
 .idea/
+
+#py 
+*.pyc
