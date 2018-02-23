@@ -2,5 +2,5 @@
 *.pem
 
 #vs code folder
-/Ragnarok_client/__pycache__/
-/Ragnarok_client/.idea/
+__pycache__/
+.idea/
