@@ -1,0 +1,9 @@
+#.pem files
+*.pem
+
+#vs code folder
+__pycache__/
+.idea/
+
+#py 
+*.pyc
