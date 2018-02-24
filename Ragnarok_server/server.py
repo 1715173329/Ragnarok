@@ -46,18 +46,25 @@ CFG=cfgloader.loadcfg()
 server_port=int((CFG["server_port"]))
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
-
-s.bind(("127.0.0.1",server_port))
+#s.bind((socket.gethostname(),server_port))
+s.bind(("127.0.0.1",server_port)) ##just for localtest
 s.listen(5)
 print ("Listening on %d"%server_port)
 
-while 1:
+while True:
     #ID auth
-    conn,addr=s.accept()
-    a_UserID=conn.recv(1024).decode()
-    send_cache=a_UserID+" Authorized."
-    conn.send(send_cache.encode())
-    print ("Connect with",a_UserID)
+    while True:
+        conn,addr=s.accept()
+        try:
+            a_UserID=conn.recv(1024).decode()
+            send_cache=a_UserID+" Authorized."
+            conn.send(send_cache.encode())
+            print ("Connect with",a_UserID)
+            break
+        except:
+            print ("Error encoding")
+        finally:
+            pass
     
     #Start ID's threading
     if  a_UserID not in UserID:
