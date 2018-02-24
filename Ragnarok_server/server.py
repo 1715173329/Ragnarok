@@ -1,4 +1,3 @@
-
 import socket
 import threading
 import time
@@ -48,7 +47,7 @@ server_port=int((CFG["server_port"]))
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
 
-s.bind((socket.gethostname(),server_port))
+s.bind(("127.0.0.1",server_port))
 s.listen(5)
 print ("Listening on %d"%server_port)
 
