@@ -1,7 +1,6 @@
 import random
 from Crypto.Cipher import AES, PKCS1_OAEP
 from Crypto.PublicKey import RSA
-import rsa
 
 
 #Output RSA pair to file
