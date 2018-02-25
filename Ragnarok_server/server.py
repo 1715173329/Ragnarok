@@ -67,7 +67,6 @@ print ('\nserver ip: '+server_ip)
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
-#s.bind((socket.gethostname(),server_port))
 s.bind((server_ip,server_port))
 s.listen(5)
 print ("Listening on %d"%server_port)
