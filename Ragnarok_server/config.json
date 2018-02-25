@@ -1,5 +1,5 @@
 {
-	"localnetwork": "true",
-	"server_ip": "0.0.0.0",
+	"localnetwork": "false",
+	"server_ip": "127.0.0.1",
 	"server_port": "8888"
 }

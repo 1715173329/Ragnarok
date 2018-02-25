@@ -53,12 +53,16 @@ if server_ip in ["","0.0.0.0"]:
     else:
         server_ips = socket.gethostbyname_ex(socket.gethostname())[-1]
         print (server_ips)
-        for n in range(len(server_ips)-1):
+        
+        for n in range(len(server_ips)):
             print ("#{0}: {1}".format(n+1,server_ips[n]))
+            
         ltofip = int(input("Input the num of your ip:"))
-        while ltofip > len(server_ip):
+        while ltofip > len(server_ip) or ltofip <= 0:
             ltofip = int(input("Please input again:"))
+            
         server_ip = server_ips[ltofip-1]
+        
 print ('\nserver ip: '+server_ip)
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -68,8 +72,12 @@ s.bind((socket.gethostname(),server_port))
 #s.bind(("127.0.0.1",server_port)) ##just for localtest
 =======
 #s.bind((socket.gethostname(),server_port))
+<<<<<<< HEAD
 s.bind((server_ip,server_port)) ##just for localtest
 >>>>>>> dev
+=======
+s.bind((server_ip,server_port))
+>>>>>>> Dev
 s.listen(5)
 print ("Listening on %d"%server_port)
 
@@ -78,7 +86,7 @@ while True:
     while True:
         conn,addr=s.accept()
         try:
-            a_UserID=conn.recv(1024)#.decode()
+            a_UserID=conn.recv(1024).decode()
             send_cache=a_UserID+" Authorized."
             conn.send(send_cache.encode())
             print ("Connect with",a_UserID)
