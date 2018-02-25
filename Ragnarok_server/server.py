@@ -67,17 +67,8 @@ print ('\nserver ip: '+server_ip)
 
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
-<<<<<<< HEAD
-s.bind((socket.gethostname(),server_port))
-#s.bind(("127.0.0.1",server_port)) ##just for localtest
-=======
 #s.bind((socket.gethostname(),server_port))
-<<<<<<< HEAD
-s.bind((server_ip,server_port)) ##just for localtest
->>>>>>> dev
-=======
 s.bind((server_ip,server_port))
->>>>>>> Dev
 s.listen(5)
 print ("Listening on %d"%server_port)
 
