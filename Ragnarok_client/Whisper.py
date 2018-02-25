@@ -48,7 +48,7 @@ class Tx(threading.Thread):
             s.send(i)
 
 def pubkey_Exchange():
-    time.sleep(3)
+    time.sleep(1.5)
     print ("RSA public key send.")
     s.send(open("public.pem").read().encode())
     Rxonce.join()
@@ -69,15 +69,6 @@ def show_me_the_key():
     print (pubkey)
     print ()
     print ("-"*75)
-    os.system("pause")
-    print ("Verify public key through any other channel")
-    os.system("pause")
-    print ("Pls make sure there's no MITM attack.")
-    os.system("pause")
-    print ("If something wrong. Shutdown your computer and...")
-    os.system("pause")
-    print ("RUN!!!!!!!")       
-    os.system("pause")
     
 def presend():
     raw_data=input("Input msg:").encode()
