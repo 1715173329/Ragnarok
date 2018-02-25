@@ -85,7 +85,6 @@ while True:
             print ("Error encoding")
             print ("=================")
             print (conn,addr)
-            print (a_UserID)
             print ("=================\n")
         finally:
             pass
