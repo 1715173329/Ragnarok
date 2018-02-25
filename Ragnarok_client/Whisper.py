@@ -121,9 +121,9 @@ if __name__ == "__main__":
     print ("-"*75)
     
     # holding 
+    print (Holding)
     while 1:
         holding=s.recv(1024)
-        print (holding)
         if holding == b"In coming":
             break
     print (s.recv(1024))
