@@ -27,7 +27,7 @@ class server(threading.Thread):
                     break
                 else:
                     UserID[self.a_UserID].send(b"Waiting connect...")
-                time.sleep(2)
+                time.sleep(0.5)
             
             UserID[self.a_UserID].send(b"Connection Establised.")
             
@@ -37,34 +37,18 @@ class server(threading.Thread):
                 UserID[self.TargetID].send(cache)
                 
         finally:
-            UserID[self.a_UserID].close()
             print ("Disconnected with",self.a_UserID)
+            UserID[self.a_UserID].close()
             del UserID[self.a_UserID]
 
 #Load port
 CFG=cfgloader.loadcfg()
 server_port=int((CFG["server_port"]))
-
-#Load ip
 server_ip = CFG["server_ip"]
-if server_ip in ["","0.0.0.0"]:
-    if "localnetwork" not in CFG or CFG["localnetwork"] == "false":
-        server_ip = socket.gethostname()
-    else:
-        server_ips = socket.gethostbyname_ex(socket.gethostname())[-1]
-        print (server_ips)
-        
-        for n in range(len(server_ips)):
-            print ("#{0}: {1}".format(n+1,server_ips[n]))
-            
-        ltofip = int(input("Input the num of your ip:"))
-        while ltofip > len(server_ip) or ltofip <= 0:
-            ltofip = int(input("Please input again:"))
-            
-        server_ip = server_ips[ltofip-1]
-        
-print ('\nserver ip: '+server_ip)
-
+if input ("Auto gethost?(y/n)")=="y":
+    server_ip = socket.gethostname()
+if input("Test mode?(y/n)")=="y":
+    server_ip = "127.0.0.1"
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
 s.bind((server_ip,server_port))
@@ -82,17 +66,16 @@ while True:
             print ("Connect with",a_UserID)
             break
         except:
-            print ("Error encoding")
-            print ("=================")
-            print (conn,addr)
-            print ("=================\n")
-        finally:
-            pass
-    
+            print ("Authorization Failed.")
+            print ("Disconnected with",conn)
+            conn.close()
+
     #Start ID's threading
     if  a_UserID not in UserID:
         UserID[a_UserID]=conn
         link=server(a_UserID)
         link.start()
     else:
+        print ("Disconnected with",conn)
         conn.close()
+        
