@@ -23,7 +23,6 @@ class server(threading.Thread):
             while 1:
                 if self.TargetID in UserID:
                     UserID[self.a_UserID].send(b"In coming")
-                    time.sleep(1)
                     break
                 else:
                     UserID[self.a_UserID].send(b"Waiting connect...")
@@ -45,10 +44,6 @@ class server(threading.Thread):
 CFG=cfgloader.loadcfg()
 server_port=int((CFG["server_port"]))
 server_ip = CFG["server_ip"]
-if input ("Auto gethost?(y/n)")=="y":
-    server_ip = socket.gethostname()
-if input("Test mode?(y/n)")=="y":
-    server_ip = "127.0.0.1"
 s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 #Start server
 s.bind((server_ip,server_port))
