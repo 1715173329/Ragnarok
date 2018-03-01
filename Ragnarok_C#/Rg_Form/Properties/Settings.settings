@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rg_Form.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UserID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Kings</Value>
+    </Setting>
+    <Setting Name="TargetID" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Queens</Value>
+    </Setting>
+    <Setting Name="Local_IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="Local_Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9527</Value>
+    </Setting>
+    <Setting Name="Server_IP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">127.0.0.1</Value>
+    </Setting>
+    <Setting Name="Server_Port" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">9999</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

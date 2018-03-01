@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
-namespace Cipher_lib
+using System.IO;
+namespace Cipher
 {
-    class RSA_module
+    public class RSA_module
     {
         public static void RSA_pair(out string pubkey, out string privkey)
         {
@@ -16,9 +16,9 @@ namespace Cipher_lib
                 privkey = RSA.ToXmlString(true);
                 pubkey = RSA.ToXmlString(false);
             }
-        } 
+        }
 
-        public static byte[] RSAEncrypt(byte[] plainbytes,string pubkey)
+        public static byte[] RSAEncrypt(byte[] plainbytes, string pubkey)
         {
             byte[] cipherbytes;
             using (RSACryptoServiceProvider RSA = new RSACryptoServiceProvider())
@@ -41,7 +41,7 @@ namespace Cipher_lib
         }
     }
 
-    class AES_module
+    public class AES_module
     {
         public static void AES_Initialize(out byte[] AES_Key, out byte[] AES_IV)
         {
@@ -60,15 +60,12 @@ namespace Cipher_lib
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
                 ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
-                using (MemoryStream msEncrypt = new MemoryStream())
-                {
-                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                MemoryStream msEncrypt = new MemoryStream();
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
                     {
                         csEncrypt.Write(clearBytes, 0, clearBytes.Length);
-                        csEncrypt.Close();
                     }
-                    encrypted = msEncrypt.ToArray();
-                }
+                encrypted = msEncrypt.ToArray();   
             }
             return encrypted;
         }
@@ -81,16 +78,12 @@ namespace Cipher_lib
                 aesAlg.Key = Key;
                 aesAlg.IV = IV;
                 ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
-                using (MemoryStream msDecrypt = new MemoryStream())
-                {
-                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
+                MemoryStream msDecrypt = new MemoryStream();
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Write))
                     {
                         csDecrypt.Write(cipherbytes, 0, cipherbytes.Length);
-                        csDecrypt.Close();
                     }
-                    clearBytes = msDecrypt.ToArray();
-                }
-
+                clearBytes = msDecrypt.ToArray();
             }
             return clearBytes;
         }
