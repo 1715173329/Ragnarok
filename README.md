@@ -27,8 +27,8 @@ python3.6.4
 ------
 Ragnarok_C#
 
-### 安装
-win10 64bit 
+### 使用环境
+请使用正版 win10 64bit 1709 (16299.248)
 
 .NET Framework 4.7.1 
 
