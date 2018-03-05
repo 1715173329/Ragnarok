@@ -1,0 +1,5 @@
+C:\Users\Kingsznhone\Source\Repos\ConsoleApp1\Cipher\bin\Release\Cipher.dll
+C:\Users\Kingsznhone\Source\Repos\ConsoleApp1\Cipher\bin\Release\Cipher.pdb
+C:\Users\Kingsznhone\Source\Repos\ConsoleApp1\Cipher\obj\Release\Cipher.csproj.CoreCompileInputs.cache
+C:\Users\Kingsznhone\Source\Repos\ConsoleApp1\Cipher\obj\Release\Cipher.dll
+C:\Users\Kingsznhone\Source\Repos\ConsoleApp1\Cipher\obj\Release\Cipher.pdb
