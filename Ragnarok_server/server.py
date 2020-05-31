@@ -24,7 +24,7 @@ def distribution(conn):
     global Clients
 
     while True:
-        #try:
+        try:
             buffer = conn.recv(4)
             header = int.from_bytes(buffer, byteorder='little')
             msg = ServerCipher.DcptString(conn.recv(header)).split("://", 1)
@@ -50,14 +50,11 @@ def distribution(conn):
             if msg[0] == "PM":
                 send_private_message(conn, msg[1])
 
-        #except:
-            #disconnect(conn)
-            #print("Distribution Except")
-            #print(Clients.values())
-            #break
-
-        #finally:
-            #break
+        except:
+            disconnect(conn)
+            print("Distribution Except")
+            print(Clients.values())
+            break
 
 
 def modulus_request(source_conn, target_username):
@@ -131,6 +128,11 @@ def main():
     global ClientsCiphers
     global ClientsModulus
     global CliensLock
+
+    Clients ={}
+    ClientsCiphers={}
+    ClientsModulus={}
+
     ActiveThread = []
     CliensLock = threading.Lock()
 
@@ -226,3 +228,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+    #input("Enter to continue")
