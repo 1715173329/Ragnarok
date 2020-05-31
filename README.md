@@ -4,7 +4,7 @@ Ragnarok Beta 1.0
 
 支持点对点私聊
 
-
+求赞求鼓励
 
 python3.8
 
