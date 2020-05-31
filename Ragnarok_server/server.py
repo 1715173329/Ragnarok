@@ -14,6 +14,8 @@ global CliensLock
 
 
 def server_pulse(conn):
+    # ServerPulse
+    # SP://username1|username2|username3
     clients_collection = Clients.values()
     clients_collection = "SP://" + "|".join(clients_collection)
     send_encypted(conn, clients_collection)
@@ -23,8 +25,10 @@ def distribution(conn):
     global ServerCipher
     global Clients
 
-    while True:
-        try:
+    try:
+        text = "SM://"+Clients[conn]+" Join"
+        broadcast(text)
+        while True:
             buffer = conn.recv(4)
             header = int.from_bytes(buffer, byteorder='little')
             msg = ServerCipher.DcptString(conn.recv(header)).split("://", 1)
@@ -36,8 +40,6 @@ def distribution(conn):
             # Client Pulse
             # CP://ClientName
             if msg[0] == "CP":
-                # ServerPulse
-                # SP://username1|username2|username3
                 server_pulse(conn)
 
             # Modulus Request
@@ -50,11 +52,10 @@ def distribution(conn):
             if msg[0] == "PM":
                 send_private_message(conn, msg[1])
 
-        except:
-            disconnect(conn)
-            print("Distribution Except")
-            print(Clients.values())
-            break
+    except:
+        disconnect(conn)
+        print("Distribution Except")
+        print(Clients.values())
 
 
 def modulus_request(source_conn, target_username):
@@ -167,10 +168,7 @@ def main():
             conn.send(buffer)
 
             # password auth
-            # if password is null
-            # server is open to public
             if serverpass != "":
-
                 buffer = conn.recv(4)
                 header = int.from_bytes(buffer, byteorder='little')
                 buffer = conn.recv(header)
@@ -186,7 +184,7 @@ def main():
             name = ServerCipher.DcptString(buffer)
             print(name + "Connected")
 
-            # check client name
+            # check client name available
             if name in Clients.values():
                 conn.close()
             else:
