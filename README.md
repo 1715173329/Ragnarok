@@ -4,6 +4,8 @@ Ragnarok Beta 1.0
 
 支持点对点私聊
 
+
+
 python3.8
 
 ### 原理
@@ -48,6 +50,8 @@ python3.8
 于是我决定写这玩意
 
 ### 设置
+
+pip3 install pycryptodomex
 
 在config里改小鸡的公网IP和端口
 
