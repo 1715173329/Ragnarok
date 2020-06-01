@@ -64,7 +64,8 @@ def modulus_request(source_conn, target_username):
     for name in Clients.values():
         if name == target_username:
             # send target client's publickey to source client
-            msg = "MA://" + target_username + "/" + ClientsModulus[name].hex()
+            msg = "MR://" + target_username + "/" + ClientsModulus[name].hex()
+            print(msg)
             send_encypted(source_conn, msg)
             return
 
